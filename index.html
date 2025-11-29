@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaltix Soft Solutions - Digital Business Card</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+
+    .card {
+      background-color: #2d1c4d;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 420px;
+      overflow: hidden;
+      color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .header {
+      background: white;
+      color: #2d1c4d;
+      padding: 35px 25px 25px;
+      text-align: center;
+    }
+
+    .logo-container {
+      width: 180px;
+      height: 80px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo img {
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .manager-photo-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 12px;
+    }
+
+    .manager-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 6px solid #2d1c4d;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .manager-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .manager-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .manager-role {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .content {
+      padding: 25px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      border-radius: 12px;
+      background-color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      gap: 15px;
+    }
+
+    .info-item i {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .phone i { background-color: #2d1c4d; }
+    .whatsapp i { background-color: #25d366; }
+    .email i { background-color: #ea4335; }
+    .website i { background-color: #34a853; }
+    .location i { background-color: #fbbc05; }
+
+    .info-text { color: #2d1c4d; }
+
+    .info-label { font-size: 13px; color: #666; }
+    .info-value { font-size: 15px; font-weight: 600; }
+
+    .action-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      gap: 8px;
+    }
+
+    .btn-primary { background: white; color: #2d1c4d; }
+    .btn-secondary { background: #2d1c4d; color: white; border: 1px solid #fff; }
+
+    .action-btn:hover { transform: translateY(-3px); }
+
+    .social-section {
+      text-align: center;
+      padding-top: 15px;
+      border-top: 1px solid #fff;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .linkedin { background-color: #0077b5; }
+    .facebook { background-color: #3b5998; }
+    .instagram {
+      background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+    }
+
+    .footer {
+      background: white;
+      color: #2d1c4d;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* RESPONSIVE FIX */
+    @media (max-width: 480px) {
+      body {
+        padding: 0;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .manager-photo-container {
+        width: 120px;
+        height: 120px;
+      }
+
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="logo-container">
+        <div class="logo">
+          <img src="images/zaltix-logo.png" alt="Zaltix Logo" />
+        </div>
+      </div>
+
+      <div class="manager-photo-container">
+        <div class="manager-photo">
+          <img src="images/ceo.jpeg" alt="Manager Photo" />
+        </div>
+      </div>
+
+      <div class="manager-name">Sai Kumar Dara</div>
+      <div class="manager-role">Founder & CEO</div>
+      <h1 class="company-name">Zaltix Soft Solutions</h1>
+      <p class="tagline">IT Consulting Firm</p>
+    </div>
+
+    <div class="content">
+
+      <!-- Phone -->
+      <div class="info-item phone" data-action="tel:+917842395388">
+        <i class="fas fa-phone-alt"></i>
+        <div class="info-text">
+          <div class="info-label">Phone</div>
+          <div class="info-value">+91 7842395388</div>
+        </div>
+      </div>
+
+      <!-- WhatsApp with Auto Message -->
+      <div class="info-item whatsapp" data-action="https://wa.me/917842395388?text=Hello%20Zaltix%20Soft%20Solutions%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services.">
+        <i class="fab fa-whatsapp"></i>
+        <div class="info-text">
+          <div class="info-label">WhatsApp</div>
+          <div class="info-value">+91 7842395388</div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="info-item email" data-action="mailto:info@zaltixsoftsolutions.com">
+        <i class="fas fa-envelope"></i>
+        <div class="info-text">
+          <div class="info-label">Email</div>
+          <div class="info-value">info@zaltixsoftsolutions.com</div>
+        </div>
+      </div>
+
+      <!-- Website -->
+      <div class="info-item website" data-action="https://zaltixsoftsolutions.com">
+        <i class="fas fa-globe"></i>
+        <div class="info-text">
+          <div class="info-label">Website</div>
+          <div class="info-value">zaltixsoftsolutions.com</div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="info-item location" data-action="https://maps.google.com/?q=Zaltix Soft Solutions Pvt Ltd">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="info-text">
+          <div class="info-label">Location</div>
+          <div class="info-value">Zaltix Soft Solutions Pvt Ltd</div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <a href="tel:+917842395388" class="action-btn btn-primary">
+          <i class="fas fa-phone-alt"></i> Call Now
+        </a>
+
+        <a href="https://wa.me/917842395388?text=Hello%20Zaltix%20Soft%20Solutions%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="action-btn btn-primary">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+
+        <a href="mailto:info@zaltixsoftsolutions.com" class="action-btn btn-secondary">
+          <i class="fas fa-envelope"></i> Email Us
+        </a>
+
+        <button class="action-btn btn-secondary" id="saveContact">
+          <i class="fas fa-address-card"></i> Save Contact
+        </button>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="social-section">
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/zaltix-soft-solutions-private-limited/posts/?feedView=all" target="_blank" class="social-icon linkedin">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.facebook.com/people/Zaltix-Soft-Solutions-Private-Limited/61574726078708/#" target="_blank" class="social-icon facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/zaltixsoftsolutions/" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      Zaltix Soft Solutions Pvt Ltd © 2025
+    </div>
+  </div>
+
+  <script>
+    // Save Contact (VCF)
+    document.getElementById('saveContact').addEventListener('click', function (e) {
+      e.preventDefault();
+      const vcfData = `BEGIN:VCARD
+VERSION:3.0
+FN:Zaltix Soft Solutions Pvt Ltd
+ORG:Zaltix Soft Solutions Pvt Ltd
+TEL;TYPE=WORK,VOICE:+917842395388
+EMAIL:info@zaltixsoftsolutions.com
+URL:https://zaltixsoftsolutions.com
+NOTE:Innovative Web & App Development Company
+END:VCARD`;
+
+      const blob = new Blob([vcfData], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'zaltix-contact.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      const originalText = this.innerHTML;
+      this.innerHTML = '<i class="fas fa-check"></i> Contact Saved!';
+      setTimeout(() => {
+        this.innerHTML = originalText;
+      }, 2000);
+    });
+
+    // Action handling
+    document.querySelectorAll('.info-item').forEach((item) => {
+      item.addEventListener('click', function () {
+        const action = this.getAttribute('data-action');
+        if (action.startsWith('tel:') || action.startsWith('mailto:')) {
+          window.location.href = action;
+        } else {
+          window.open(action, '_blank');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
